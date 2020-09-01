@@ -17,6 +17,10 @@ def get_pw(username):
     return None
 
 
+@auth.error_handler
+def auth_error():
+    return render_template('loginerror.html', title='Flask BasicAuth')
+
 @app.route('/')
 @auth.login_required
 def index():
